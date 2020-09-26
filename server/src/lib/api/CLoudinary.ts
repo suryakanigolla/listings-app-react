@@ -9,7 +9,7 @@ cloudinary.v2.config({
 export const Cloudinary = {
   upload: async (image: string): Promise<string> => {
     const res = await cloudinary.v2.uploader.upload(image, {
-      folder: "TH_ASSETS/"
+      folder: "TP_ASSETS/"
     });
 
     return res.secure_url;

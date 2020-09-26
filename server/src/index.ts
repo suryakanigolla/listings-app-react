@@ -12,7 +12,7 @@ const mount = async (app: Application) => {
   const db = await connectDatabase();
 
   app.use(
-    bodyParser.json({
+    bodyParser.json({  //this increases the http request size to 2mb as base64 of img uploaded in hosting is more than the default 1mb
       limit: "2mb"
     })
   );
