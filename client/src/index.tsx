@@ -13,8 +13,7 @@ import {
   User,
   Login,
   AppHeader,
-  Stripe,
-  WrappedHost
+  Stripe, Host
 } from "./sections";
 import { Viewer } from "./lib/types";
 import * as serviceWorker from "./serviceWorker";
@@ -98,7 +97,7 @@ const App = () => {
               <Home />
             </Route>
             <Route exact path="/host">
-              <WrappedHost viewer={viewer} />
+              <Host viewer={viewer} />
             </Route>
             <Route exact path="/listing/:id">
               <Elements>

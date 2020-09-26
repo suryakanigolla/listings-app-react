@@ -29,15 +29,15 @@ export const Host = ({ viewer }: Props) => {
   const [imageBase64Value, setImageBase64Value] = useState<string | null>(null);
 
   const handleImageUpload = (info: UploadChangeParam) => {
-    const { file } = info;
+    const { file } = info; //this file object is not just a file but also status property like loading
 
     if (file.status === "uploading") {
       setImageLoading(true);
       return;
     }
 
-    if (file.status === "done" && file.originFileObj) {
-      getBase64Value(file.originFileObj, imageBase64Value => {
+    if (file.status === "done" && file.originFileObj) { //originFileObj contains the actual file
+      getBase64Value(file.originFileObj, imageBase64Value => { //here callback function is used
         setImageBase64Value(imageBase64Value);
         setImageLoading(false);
       });
@@ -93,9 +93,7 @@ export const Host = ({ viewer }: Props) => {
           <Input.TextArea
             rows={3}
             maxLength={400}
-            placeholder={`
-              Modern, clean, and iconic home of the Fresh Prince.
-              Situated in the heart of Bel-Air, Los Angeles.
+            placeholder={`Modern, clean, and iconic home of the Fresh Prince. Situated in the heart of Bel-Air, Los Angeles.
             `}
           />
         </Item>
@@ -133,7 +131,7 @@ export const Host = ({ viewer }: Props) => {
                 <img src={imageBase64Value} alt="Listing" />
               ) : (
                 <div>
-                  <Icon type={imageLoading ? "loading" : "plus"} />
+                  <Icon type={imageLoading ? "loading" : "plus"} /> 
                   <div className="ant-upload-text">Upload</div>
                 </div>
               )}
@@ -153,9 +151,11 @@ export const Host = ({ viewer }: Props) => {
   );
 };
 
+//IN Icon type in Upload part, icon is decided based on state variable imageLoading
+
 const beforeImageUpload = (file: File) => {
   const fileIsValidImage = file.type === "image/jpeg" || file.type === "image/png";
-  const fileIsValidSize = file.size / 1024 / 1024 < 1;
+  const fileIsValidSize = file.size / 1024 / 1024 < 1; //filesize is divided by 1024 2 times to convert it into binary
 
   if (!fileIsValidImage) {
     displayErrorMessage("You're only able to upload valid JPG or PNG files!");
@@ -173,12 +173,12 @@ const beforeImageUpload = (file: File) => {
 };
 
 const getBase64Value = (
-  img: File | Blob,
-  callback: (imageBase64Value: string) => void
+  img: File | Blob, //Blog is another kind of object like File
+  callback: (imageBase64Value: string) => void //base64 format is used to send files to servers as raw images cannot be efficiently sent
 ) => {
   const reader = new FileReader();
-  reader.readAsDataURL(img);
-  reader.onload = () => {
-    callback(reader.result as string);
+  reader.readAsDataURL(img); //readAsDataUrl converts img to base64 value
+  reader.onload = () => { //onLoad() is triggered only when img is read fully
+    callback(reader.result as string); //we re type checking as string here because result can also be in form of ArrayBuffer if img type is not jpeg or png
   };
 };
