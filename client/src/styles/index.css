@@ -13,8 +13,8 @@
 }
 .app-header {
   display: flex;
-  background: #fff;
-  box-shadow: 0 2px 8px #f0f1f2;
+  background: #1d2433;
+  box-shadow: 0 2px 8px #ffcc66;
   padding: 0;
 }
 .app-header__logo-search-section {
@@ -40,17 +40,17 @@
   width: 100%;
   max-width: 460px;
 }
-.app-header__search-input .ant-input-group input {
+/* .app-header__search-input .ant-input-group input {
   border: 1px solid #f0f1f2;
   box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
-}
+} */
 .app-header__menu-section {
   float: right;
 }
 .app-header-skeleton {
   display: flex;
-  background: #fff;
-  box-shadow: 0 2px 8px #f0f1f2;
+  background: #1d2433;
+  box-shadow: 0 2px 8px #ffcc66;
   padding: 0;
 }
 .app-header-skeleton__search-section {
@@ -75,10 +75,10 @@
   width: 100%;
   max-width: 460px;
 }
-.app-header-skeleton__search-input .ant-input-group input {
+/* .app-header-skeleton__search-input .ant-input-group input {
   border: 1px solid #f0f1f2;
   box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
-}
+} */
 .error-banner {
   position: fixed;
   width: 100%;
@@ -117,7 +117,7 @@
   font-size: 13px;
 }
 .listing-card__dimensions span {
-  color: #bfbfbf;
+  color: red;
 }
 .listing-card__dimensions--guests {
   float: right;
@@ -148,10 +148,10 @@
   max-width: 600px;
 }
 .home-hero__title.ant-typography {
-  color: #1d226c;
+  color: white;
 }
 .home-hero__search-input input {
-  border: 1px solid #f0f1f2;
+  border: 1px solid #8695b7;
   box-shadow: 0 2px 4px rgba(29, 34, 108, 0.1);
 }
 .home-hero__cards {
@@ -190,7 +190,7 @@
   padding: 40px 0 20px;
 }
 .home-listings__title.ant-typography {
-  color: #1d226c;
+  color: white;
   display: inline-block;
 }
 .home-listings-skeleton {
@@ -222,7 +222,7 @@
   margin: 0 auto;
 }
 .home__cta-section-title.ant-typography {
-  color: #1d226c;
+  color: white;
 }
 .home__cta-section-button {
   margin-top: 20px;
@@ -231,7 +231,7 @@
   padding: 40px 0 20px;
 }
 .home__listings-title.ant-typography {
-  color: #1d226c;
+  color: white;
   display: inline-block;
 }
 .home__listings-img-cover {
@@ -265,7 +265,7 @@
 }
 
 .host__form-title.ant-typography {
-  color: #1d226c;
+  color: white;
   margin-bottom: 5px;
 }
 
@@ -274,7 +274,7 @@
 }
 .listing-bookings h3.ant-typography,
 .listing-bookings h4.ant-typography {
-  color: #1d226c;
+  color: white;
 }
 .listing-bookings__section {
   font-size: 15px;
@@ -304,7 +304,7 @@
   }
 }
 .listing-booking__card-title.ant-typography {
-  color: #1d226c;
+  color: white;
   margin-bottom: 5px;
 }
 .listing-booking__card-title.ant-typography span {
@@ -363,7 +363,7 @@
 }
 .listing-details h3.ant-typography,
 .listing-details h4.ant-typography {
-  color: #1d226c;
+  color: white;
 }
 .listing-details__image {
   width: 100%;
@@ -388,6 +388,7 @@
 .listing-details__city-address.ant-typography,
 .listing-details__ratings.ant-typography {
   margin: 5px 0;
+  color: wheat;
 }
 .listing-details__ratings.ant-typography {
   font-size: 13px;
@@ -437,7 +438,7 @@
 }
 .listings-filters {
   padding: 10px 0;
-  background: #fff;
+  background: #1d2433;
 }
 .listings-filters
   .ant-select-selection--single
@@ -446,6 +447,7 @@
 }
 .listings-filters span {
   padding-right: 5px;
+  color: white;
 }
 .listings-pagination {
   padding: 10px 0;
@@ -480,7 +482,7 @@
   padding: 10px 0;
 }
 .listings__title.ant-typography {
-  color: #1d226c;
+  color: white;
 }
 .log-in {
   display: flex;
@@ -551,11 +553,12 @@
   padding-top: 40px;
 }
 .user-bookings__title.ant-typography {
-  color: #1d226c;
+  color: white;
   display: inline-block;
 }
 .user-bookings__description.ant-typography {
   font-size: 15px;
+  color: white;
 }
 .user-bookings .ant-list-pagination {
   padding-bottom: 20px;
@@ -577,7 +580,7 @@
   padding-top: 40px;
 }
 .user-listings__title.ant-typography {
-  color: #1d226c;
+  color: white;
   display: inline-block;
 }
 .user-listings .ant-list-pagination {
@@ -585,6 +588,7 @@
 }
 .user-listings__description.ant-typography {
   font-size: 15px;
+  color: white;
 }
 .user-profile {
   max-width: 400px;
@@ -626,12 +630,12 @@ html {
 }
 #app {
   position: relative;
-  background: #fff;
+  background: #1d2433;
   min-height: 100vh;
 }
 .app-skeleton {
   height: 100%;
-  background: #fff;
+  background: #1d2433;
   display: flex;
 }
 .app-skeleton__spin-section {
@@ -648,6 +652,51 @@ html {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+.ant-typography {
+  color: black;
+}
+.ant-input {
+  background-color: #8695b7;
+  border: 1px solid #8695b7;
+}
+.applyWhite {
+  color: #bae67e;
+}
+.ant-card-bordered {
+  border: 1px solid #ffae57
+}
+.user-profile .ant-card-body {
+  background-color: #8695b7;
+}
+.host-content .ant-typography {
+  color: white;
+}
+.ant-form-item-label > label {
+  color: wheat;
+}
+.ant-input-number-input:placeholder-shown {
+  background-color: #8695b7;
+}
+.host-content .ant-form {
+  border: 1px solid #ffd580;
+  padding: 20px;
+}
+.listings__title__para {
+  color: white;
+}
+.listing-detail__section .ant-typography {
+  color: white;
+  padding-top: 10px;
+}
+.listing-booking .ant-card {
+  background-color: #2f3b54;
+}
+.ant-form-extra {
+  color: white;
+}
+.ant-list-empty-text {
+  color: wheat;
 }
 @media (max-width: 36em) {
   .app__affix-footer {

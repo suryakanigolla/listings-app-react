@@ -56,12 +56,12 @@ export const ListingCreateBookingModal = ({
     },
     onError: () => {
       displayErrorMessage(
-        "Sorry! We were'nt able to successfully book the listing. Please try again later."
+        "Stripe is configured to work in test mode."
       );
     }
   });
 
-  const daysBooked = checkOutDate.diff(checkInDate, "days") + 1;
+  const daysBooked = checkOutDate.diff(checkInDate, "days") + 1; // here +1 because we want check in date also to be included
   const listingPrice = daysBooked * price;
 
   const handleCreateBooking = async () => {
@@ -87,7 +87,7 @@ export const ListingCreateBookingModal = ({
     } else {
       return displayErrorMessage(
         error && error.message
-          ? error.message
+          ? error.message //this error is from Stripe
           : "Sorry! We weren't able to book the listing. Please try again later."
       );
     }

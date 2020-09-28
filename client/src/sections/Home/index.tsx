@@ -75,7 +75,7 @@ export const Home = () => {
         <Title level={2} className="home__cta-section-title">
           Your guide for all things rental
         </Title>
-        <Paragraph>
+        <Paragraph className="applyWhite">
           Helping you make the best decisions in renting your last minute
           locations.
         </Paragraph>

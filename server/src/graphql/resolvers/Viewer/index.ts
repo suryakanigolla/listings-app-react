@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { Request, Response } from "express";
 import { IResolvers } from "apollo-server-express";
-import { Google, Stripe } from "../../../lib/api";
+import { Google, StripeFunc } from "../../../lib/api";
 import { Viewer, Database, User } from "../../../lib/types";
 import { authorize } from "../../../lib/utils";
 import { LoginArgs, ConnectStripeArgs } from "./types";
@@ -179,7 +179,7 @@ export const viewerResolvers: IResolvers = {
           throw new Error("viewer cannot be found");
         }
 
-        const wallet = await Stripe.connect(code);
+        const wallet = await StripeFunc.connect(code);
         if (!wallet) {
           throw new Error("stripe grant error");
         }

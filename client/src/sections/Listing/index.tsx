@@ -49,13 +49,13 @@ export const Listing = ({ viewer }: Props) => {
 
   useScrollToTop();
 
-  const clearBookingData = () => {
+  const clearBookingData = () => { //this function triggers when booking is sucessfull
     setModalVisible(false);
     setCheckInDate(null);
     setCheckOutDate(null);
   };
 
-  const handleListingRefetch = async () => {
+  const handleListingRefetch = async () => { //this method is called after booking to refresh datepicker values
     await refetch();
   };
 

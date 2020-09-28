@@ -31,7 +31,7 @@ export const ListingCreateBooking = ({
   bookingsIndex,
   setModalVisible
 }: Props) => {
-  const bookingsIndexJson: BookingsIndex = JSON.parse(bookingsIndex);
+  const bookingsIndexJson: BookingsIndex = JSON.parse(bookingsIndex); //bookingsIndex is a string
 
   const dateIsBooked = (currentDate: Moment): boolean => {
     const year = currentDate.year();

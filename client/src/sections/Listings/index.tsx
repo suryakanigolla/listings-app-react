@@ -105,11 +105,11 @@ export const Listings = () => {
       </div>
     ) : (
       <div>
-        <Paragraph>
+        <Paragraph className="listings__title__para">
           It appears that no listings have been created for{" "}
           <Text mark>{listingsRegion}</Text>
         </Paragraph>
-        <Paragraph>
+        <Paragraph className="listings__title__para">
           Be the first person to create a{" "}
           <Link to="/host">listing in this area!</Link>
         </Paragraph>

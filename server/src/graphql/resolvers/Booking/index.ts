@@ -1,7 +1,7 @@
 import { IResolvers } from "apollo-server-express";
 import { Request } from "express";
 import { ObjectId } from "mongodb";
-import { Stripe } from "../../../lib/api";
+import { StripeFunc } from "../../../lib/api";
 import { authorize } from "../../../lib/utils";
 import {
   Booking,
@@ -22,11 +22,11 @@ const resolveBookingsIndex = (
   const newBookingsIndex = { ...bookingsIndex };
 
   while (dateCursor <= checkOut) {
-    const year = dateCursor.getUTCFullYear();
-    const month = dateCursor.getUTCMonth();
+    const year = dateCursor.getUTCFullYear(); //returns numbers from 0 to 11 for months 
+    const month = dateCursor.getUTCMonth(); 
     const day = dateCursor.getUTCDate();
 
-    if (!newBookingsIndex[year]) {
+    if (!newBookingsIndex[year]) { //check if there is a value at index "year"
       newBookingsIndex[year] = {};
     }
 
@@ -36,13 +36,13 @@ const resolveBookingsIndex = (
 
     if (!newBookingsIndex[year][month][day]) {
       newBookingsIndex[year][month][day] = true;
-    } else {
+    } else { //else if date already exists
       throw new Error(
         "selected dates can't overlap dates that have already been booked"
       );
     }
 
-    dateCursor = new Date(dateCursor.getTime() + 86400000);
+    dateCursor = new Date(dateCursor.getTime() + 86400000); //adding one day in milliseconds
   }
 
   return newBookingsIndex;
@@ -92,7 +92,7 @@ export const bookingResolvers: IResolvers = {
           checkOut
         );
 
-        // get total price to charge
+        // get total price to charge and getTime gives result in milliseconds so div by 86400000 milliseconds per day
         const totalPrice =
           listing.price *
           ((checkOutDate.getTime() - checkInDate.getTime()) / 86400000 + 1);
@@ -107,7 +107,7 @@ export const bookingResolvers: IResolvers = {
         }
 
         // create stripe charge
-        await Stripe.charge(totalPrice, source, host.walletId);
+        await StripeFunc.charge(totalPrice, source, host.walletId);
 
         // insert new booking in db
         const insertRes = await db.bookings.insertOne({
@@ -155,11 +155,11 @@ export const bookingResolvers: IResolvers = {
       return db.listings.findOne({ _id: listing });
     },
     tenant: async (
-      { tenant }: Booking,
+      booking: Booking,
       _args: {},
       { db }: { db: Database }
     ): Promise<User> => {
-      const user = await db.users.findOne({ _id: tenant });
+      const user = await db.users.findOne({ _id: booking.tenant });
       if (!user) {
         throw new Error(`could not find tenant`);
       }

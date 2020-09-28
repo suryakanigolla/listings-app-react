@@ -182,7 +182,7 @@ export const Host = ({ viewer, form }: Props & FormComponentProps) => {
                 message: "Please enter a title for your listing!"
               }
             ]
-          })(<Input maxLength={45} placeholder="The iconic and luxurious Bel-Air mansion" />)}
+          })(<Input maxLength={45} placeholder="The Stark Tower Complex" />)}
         </Item>
 
 
@@ -198,10 +198,7 @@ export const Host = ({ viewer, form }: Props & FormComponentProps) => {
             <Input.TextArea
               rows={3}
               maxLength={400}
-              placeholder={`
-                Modern, clean, and iconic home of the Fresh Prince.
-                Situated in the heart of Bel-Air, Los Angeles.
-              `}
+              placeholder={`Home to the Avengers`}
             />
           )}
         </Item>
@@ -214,7 +211,7 @@ export const Host = ({ viewer, form }: Props & FormComponentProps) => {
                 message: "Please enter an address for your listing!"
               }
             ]
-          })(<Input placeholder="251 North Bristol Avenue" />)}
+          })(<Input placeholder="Midtown Manhattan, New York City, USA" />)}
         </Item>
 
         <Item label="City/Town">
@@ -225,7 +222,7 @@ export const Host = ({ viewer, form }: Props & FormComponentProps) => {
                 message: "Please enter a city (or region) for your listing!"
               }
             ]
-          })(<Input placeholder="Los Angeles" />)}
+          })(<Input placeholder="New York City" />)}
         </Item>
 
         <Item label="State/Province">
@@ -236,7 +233,7 @@ export const Host = ({ viewer, form }: Props & FormComponentProps) => {
                 message: "Please enter a state for your listing!"
               }
             ]
-          })(<Input placeholder="California" />)}
+          })(<Input placeholder="New York" />)}
         </Item>
 
         <Item label="Zip/Postal Code">

@@ -14,7 +14,7 @@ import {
   Login,
   AppHeader,
   Stripe,
-  WrappedHost
+  WrappedHost, HomeModal
 } from "./sections";
 import { Viewer } from "./lib/types";
 import * as serviceWorker from "./serviceWorker";
@@ -48,6 +48,7 @@ const initialViewer: Viewer = {
 
 const App = () => {
   const [viewer, setViewer] = useState<Viewer>(initialViewer);
+  const [homeModalVisible, setHomeModalVisible] = useState(false);
   const [login, { error }] = useMutation<LoginData, LoginVariables>(LOGIN, {
     onCompleted: data => {
       if (data && data.login) {
@@ -65,6 +66,11 @@ const App = () => {
   const loginRef = useRef(login);
 
   useEffect(() => {
+    let pop_status = localStorage.getItem('pop_status');
+          if(!pop_status){
+            setHomeModalVisible(true)
+            localStorage.setItem('pop_status',"1");
+    }
     loginRef.current();
   }, []);
 
@@ -75,7 +81,7 @@ const App = () => {
       <Layout className="app-skeleton">
         <AppHeaderSkeleton />
         <div className="app-skeleton__spin-section">
-          <Spin size="large" tip="Launching Tinyhouse" />
+          <Spin size="large" tip="Launching App" />
         </div>
       </Layout>
     );
@@ -85,10 +91,16 @@ const App = () => {
     <ErrorBanner description="We were'nt able to verify if you were logged in. Please try again later!" />
   ) : null;
 
+  const homeModalElement = <HomeModal
+    homeModalVisible = {homeModalVisible}
+    setHomeModalVisible = {setHomeModalVisible}
+  ></HomeModal>
+
   return (
     <StripeProvider apiKey={process.env.REACT_APP_S_PUBLISHABLE_KEY as string}>
       <Router>
         <Layout id="app">
+          {homeModalElement}
           {loginErrorBannerElement}
           <Affix offsetTop={0}>
             <AppHeader viewer={viewer} setViewer={setViewer} />
@@ -104,7 +116,6 @@ const App = () => {
               <Elements>
                 <Listing viewer={viewer} />
               </Elements>
-              
             </Route>
             <Route exact path="/listings/:location?">
               <Listings />
@@ -112,7 +123,6 @@ const App = () => {
             <Route exact path="/login">
               <Login setViewer={setViewer} />
             </Route>
-            
             <Route exact path="/stripe">
               <Stripe viewer={viewer} setViewer={setViewer} />
             </Route>
