@@ -4,6 +4,13 @@ A simple listings app bootstrapped with create-react-app
 
 ![homepage](https://raw.githubusercontent.com/suryakanigolla/listings-app-react/master/homepage.PNG)
 
+Features:
+
+- Host a listing
+- Book a listing
+- Can pay via Stripe
+
+
 Built with:
 
 - [React.js](https://reactjs.org/)
